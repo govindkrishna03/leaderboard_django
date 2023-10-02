@@ -1,61 +1,118 @@
-<!-- leaderboard.html in templates/leaderboard/ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaderboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #0f0913;
+            margin: 0;
+            padding: 0;
         }
 
         h1 {
             text-align: center;
-            margin-top: 20px;
+            color: #efedef;
+            font-size: 40px;
         }
 
         table {
             width: 80%;
-            margin: 0 auto;
+            margin: 20px auto;
             border-collapse: collapse;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #d2b863;
         }
 
         th, td {
-            padding: 12px 15px;
-            text-align: left;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #d2b863;
+            font-size: 25px;
         }
 
         th {
-            background-color: #007bff;
-            color: white;
+            background-color: #d2b863;
+            color: #0f0913;
         }
 
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
+
+        tr {
+            color: #fffba4;
         }
 
         tr:hover {
             background-color: #ddd;
+            color: black;
         }
+
+        .logo-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px auto;
+        }
+
+        .hacktober_logo {
+            width: 100%;
+            max-width: 500px; 
+            height: auto; 
+            margin-bottom: 10px; 
+        }
+
+        .foss_logo, .amrita_logo {
+            width: 100%;
+            max-width: 150px; 
+            height: auto; 
+            margin-bottom: 10px; 
+        }
+
+        @media (max-width: 768px) {
+      
+            h1 {
+                font-size: 30px; 
+            }
+
+            table {
+                font-size: 20px; 
+            }
+
+            .logo-container {
+                flex-direction: column; 
+                align-items: center; 
+            }
+        }
+        
     </style>
 </head>
 <body>
-    <h1>Leaderboard</h1>
+    <div class="logo-container">
+        {% load static %}
+        <img class="foss_logo" src="{% static 'leaderboard_app/foss_logo.png' %}" alt="foss_logo" />
+        <img class="hacktober_logo" src="{% static 'leaderboard_app/hack_logo.png' %}" alt="hacktober_logo" />
+        <img class="amrita_logo" src="{% static 'leaderboard_app/amrita.png' %}" alt="amrita_logo" />
+    </div>
+    <h1>LEADERBOARD</h1>
     <table>
         <thead>
             <tr>
+                <th>Position</th>
                 <th>Name</th>
                 <th>Score</th>
             </tr>
         </thead>
         <tbody>
             {% for score in scores %}
-                <tr>
-                    <td>{{ score.name }}</td>
-                    <td>{{ score.score }}</td>
-                </tr>
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ score.name }}</td>
+                <td>{{ score.score }}</td>
+            </tr>
             {% endfor %}
         </tbody>
     </table>
