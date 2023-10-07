@@ -103,18 +103,20 @@
             <tr>
                 <th>Position</th>
                 <th>Name</th>
-                <th>Score</th>
+                <th>Commits</th>
             </tr>
         </thead>
         <tbody>
-            {% for score in scores %}
+            {% for contributor, commit_count in ranked_contributors %}
             <tr>
                 <td>{{ forloop.counter }}</td>
-                <td>{{ score.name }}</td>
-                <td>{{ score.score }}</td>
+                <td>{{ contributor }}</td>
+                <td>{{ commit_count }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    
+    
 </body>
 </html>

@@ -1,7 +1,10 @@
 from django.shortcuts import render
-from .models import Score
-
-
+from api_github import fetch_github_commits 
 def leaderboard_view(request):
-    scores = Score.objects.all().order_by("-score")[:10]
-    return render(request, "leaderboard/leaderboard.html", {"scores": scores})
+    owner = 'govindkrishna03'
+    repo = 'leaderboard_django'
+
+    commits = fetch_github_commits(owner, repo)
+    
+    context = {'ranked_contributors': commits} 
+    return render(request, "leaderboard/leaderboard.html", context)
