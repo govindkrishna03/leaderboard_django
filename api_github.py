@@ -13,6 +13,8 @@ def fetch_github_commits(owner, repo):
     
     response = requests.get(url, headers=headers)
 
+    owner_name ="Govind Krishna"
+
 
 
   
@@ -23,10 +25,11 @@ def fetch_github_commits(owner, repo):
         commit_count = {}
         for commit in commits:
             contributor_name = commit['commit']['author']['name']
-            if contributor_name in commit_count:
-                commit_count[contributor_name] += 1
-            else:
-                commit_count[contributor_name] = 1
+            if contributor_name != owner_name:
+                 if contributor_name in commit_count:
+                     commit_count[contributor_name] += 1
+                 else:
+                    commit_count[contributor_name] = 1
 
        
         ranked_contributors = sorted(commit_count.items(), key=lambda x: x[1], reverse=True)

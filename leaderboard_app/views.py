@@ -2,7 +2,7 @@ from django.shortcuts import render
 from api_github import fetch_github_commits 
 def leaderboard_view(request):
     owner = 'govindkrishna03'
-    repo = 'leaderboard_django'
+    repo = 'Hacktober_2023'
 
     commits = fetch_github_commits(owner, repo)
     
