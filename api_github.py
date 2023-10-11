@@ -13,7 +13,7 @@ def fetch_github_commits(owner, repo):
     
     response = requests.get(url, headers=headers)
 
-    owner_name =["Govind Krishna","Wreck-X","Viserion-7"]
+    owner_name =["govindkrishna03","Wreck-X","Viserion-7"]
 
 
 
