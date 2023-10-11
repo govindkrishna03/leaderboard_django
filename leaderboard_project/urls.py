@@ -19,5 +19,5 @@ from django.urls import path
 from leaderboard_app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('leaderboard/', views.leaderboard_view, name='leaderboard'),
+    path('', views.leaderboard_view, name='leaderboard'),
 ]
